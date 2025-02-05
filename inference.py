@@ -102,6 +102,10 @@ def main():
     original_np = img_tensor.squeeze(0).cpu().permute(1,2,0).numpy()
     recon_np = img_tensor.squeeze(0).cpu().permute(1,2,0).numpy()
     
+    to_pil = transforms.ToPILImage()
+    reconstructed_img_pil = to_pil(recon_img.squeeze(0).cpu())
+    reconstructed_img_pil.save("reconstructed_image.png")
+    
     # Plot original vs reconstructed image
     fig, axes = plt.subplots(1, 2, figsize=(10, 5))
     axes[0].imshow(original_np)
